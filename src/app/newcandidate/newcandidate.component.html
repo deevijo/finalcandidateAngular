@@ -1,0 +1,30 @@
+<h1 mat-dialog-title>Create new candidate</h1>
+<div mat-dialog-content>  
+    <mat-form-field>
+  <input matInput placeholder="Name" type="text" required minlength="2"  [(ngModel)]="data.name">  
+    </mat-form-field>
+</div>
+<div mat-dialog-content>  
+    <mat-form-field>
+  <input matInput placeholder="Contact Number" type="text" required minlength="10" maxlength="10"  [(ngModel)]="data.number">
+    </mat-form-field>
+</div>
+<div>
+    <mat-form-field>
+  <input matInput placeholder="Skills" type="text" required  [(ngModel)]="data.skills">  
+    </mat-form-field>
+  </div>
+  <div>
+      <mat-form-field>
+  <input matInput [matDatepicker]="picker" placeholder="Choose a date"  [(ngModel)]="data.date">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field> 
+ </div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onSubmit()" >Submit</button>  
+  <!-- <div class = "divider"></div>
+  <button mat-button [mat-dialog-close] cdkFocusInitial>Cancel</button> -->
+</div>
+

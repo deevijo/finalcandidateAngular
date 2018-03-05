@@ -1,0 +1,59 @@
+<div *ngIf="dataSource">
+
+<mat-table #table [dataSource]="dataSource">
+  <!-- Checkbox Column -->
+
+<ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+    <mat-cell *matCellDef="let candidate"> {{candidate.id}} </mat-cell>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+    <mat-cell *matCellDef="let candidate"> {{candidate.name}} </mat-cell>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="number">
+    <mat-header-cell *matHeaderCellDef> Number </mat-header-cell>
+    <mat-cell *matCellDef="let candidate"> {{candidate.number}} </mat-cell>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="date">
+    <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
+    <mat-cell *matCellDef="let candidate"> {{candidate.date}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="skills">
+    <mat-header-cell *matHeaderCellDef> Skills </mat-header-cell>
+    <mat-cell *matCellDef="let candidate"> {{candidate.skills}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="actionsColumn">
+    <mat-header-cell *matHeaderCellDef>
+      <button mat-icon-button color="accent" (click)="openDialog()"><i class="fa fa-plus mat-icon"></i></button>
+    </mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      <button *ngIf="!row.editing" mat-icon-button color="primary" focusable="false" (click)="openinedit(row)">
+            <i class="fa fa-pencil mat-icon"></i>
+          </button>
+      
+      <button mat-icon-button color="primary" focusable="false" (click)="deleteitem(row.id)">
+            <i class="fa fa-times mat-icon"></i>
+          </button>
+          <!-- <button mat-icon-button color="primary" focusable="false" (click)="row.cancelOrDelete()">
+            <i class="fa fa-eye mat-icon"></i>
+          </button> -->
+    </mat-cell>
+  </ng-container>
+  
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+</div>
+<div [hidden]="dataSource">
+  no data to show, make sure you are connected to database
+</div>
+
